@@ -7,14 +7,25 @@ const Header = () => {
     <header className="header">
       <div className="logo">
         <Link to="/">
-          <img src="/images/news.jpg" alt="" />
+          <img src="/images/news.jpg" alt="Logo" />
         </Link>
       </div>
       <ul className="nav">
-        <li className="nav-link">Business</li>
-        <li className="nav-link">Sports</li>
-        <li className="nav-link">Entertainmant</li>
-        <li className="nav-link">Politics</li>
+        <li className="nav-link">
+          <Link to="/category/history">History</Link>
+        </li>
+        <li className="nav-link">
+          <Link to="/category/crime">Crime</Link>
+        </li>
+        <li className="nav-link">
+          <Link to="/category/fiction">Fiction</Link>
+        </li>
+        <li className="nav-link">
+          <Link to="/category/classic">Classic</Link>
+        </li>
+        <li className="nav-link">
+          <Link to="/category/american">American</Link>
+        </li>
       </ul>
     </header>
   );

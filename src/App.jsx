@@ -1,14 +1,25 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import SigleArticle from "./pages/SigleArticle";
+import CategoryPage from "./pages/CategoryPage";
+import Header from "./components/Header";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   // const id = useContext(url);
   return (
-    <Routes>
-      <Route path="/" element={<Home />} exact></Route>
-      <Route path="/post/:postId" element={<SigleArticle />}></Route>
-    </Routes>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} exact></Route>
+        <Route path="/post/:postId" element={<SigleArticle />}></Route>
+        <Route
+          path="/category/:categoryName"
+          element={<CategoryPage />}
+        ></Route>
+        <Route path="/search" element={<SearchPage />}></Route>
+      </Routes>
+    </>
   );
 }
 

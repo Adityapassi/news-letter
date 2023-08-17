@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import MainContainer from "../components/MainContainer";
 import Footer from "../components/Footer";
 
-const Home = () => {
+const SearchPage = () => {
   return (
     <div>
-      <MainContainer main />
+      <MainContainer search />
       <Footer />
     </div>
   );
 };
 
-export default Home;
+export default SearchPage;
