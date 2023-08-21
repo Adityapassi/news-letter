@@ -4,6 +4,7 @@ import SigleArticle from "./pages/SigleArticle";
 import CategoryPage from "./pages/CategoryPage";
 import Header from "./components/Header";
 import SearchPage from "./pages/SearchPage";
+import NotFound from "./pages/NotFound";
 
 function App() {
   // const id = useContext(url);
@@ -18,6 +19,7 @@ function App() {
           element={<CategoryPage />}
         ></Route>
         <Route path="/search" element={<SearchPage />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </>
   );

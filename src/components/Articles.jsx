@@ -3,12 +3,13 @@ import { useAPICall } from "../utility/useAPICall";
 import Pagination from "./Pagination";
 import Article from "./Article";
 import Loader from "./Loader";
+import { Navigate } from "react-router-dom";
 
 const Articles = () => {
   let [posts, setPosts] = useState([]);
   let [loading, setLoading] = useState(true);
   let [currentPage, setCurrentPage] = useState(1);
-  let error = "";
+  let [error, setError] = useState("");
 
   useEffect(() => {
     useAPICall("https://dummyjson.com/posts")
@@ -16,7 +17,7 @@ const Articles = () => {
         setPosts(res.data.posts);
         setLoading(false);
       })
-      .catch((err) => err);
+      .catch((err) => setError(err));
   }, []);
 
   const postPerPage = 5;
@@ -26,7 +27,9 @@ const Articles = () => {
 
   return (
     <div className="articles-container">
-      {loading ? (
+      {error ? (
+        <Navigate to="*" />
+      ) : loading ? (
         <Loader />
       ) : (
         currentPosts.map((post) => <Article data={post} key={post.id} />)

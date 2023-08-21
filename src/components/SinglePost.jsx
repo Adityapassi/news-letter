@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useAPICall } from "../utility/useAPICall";
 import Loader from "./Loader";
 
@@ -8,6 +8,7 @@ const SinglePost = () => {
   const { postId } = useParams();
   const [post, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const url = "https://dummyjson.com/post/" + postId;
   useEffect(() => {
     useAPICall(url)
@@ -16,7 +17,7 @@ const SinglePost = () => {
         setLoading(false);
       })
       .catch((err) => {
-        alert("error occured :" + err);
+        setError(err);
         setLoading(false);
       });
   }, [postId]);
@@ -24,7 +25,9 @@ const SinglePost = () => {
   return (
     <Fragment>
       <div className="single-post">
-        {loading ? (
+        {error ? (
+          <Navigate to="*" />
+        ) : loading ? (
           <Loader />
         ) : (
           <Fragment>
